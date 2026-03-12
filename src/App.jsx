@@ -3,28 +3,32 @@ import Die from './Die'
 import './index.css'
 
 function App() {
-const [generateDice, setGenerateDice] = useState(generateAllNewDice);
+  const [generateDice, setGenerateDice] = useState(generateAllNewDice);
 
   function generateAllNewDice() {
-       let newArray = [];
+    let newArray = [];
 
-       for(let i = 0; i < 10; i++){
-         const random = Math.ceil(Math.random() * 6);
-         newArray.push(random);
-      }
+    for (let i = 0; i < 10; i++) {
+      const random = Math.ceil(Math.random() * 6);
+      newArray.push(random);
+    }
 
-      return newArray
+    return newArray
+  }
+
+  function rollDice() {
+    setGenerateDice(generateAllNewDice);
   }
 
   const dice = generateDice.map((dice) => {
-    return <Die value={dice}/>
+    return <Die value={dice} />
   })
 
-  
-  return(
+  return (
     <>
       <main>
         {dice}
+        <button className='roll-button' onClick={rollDice} >Roll Dice</button>
       </main>
     </>
   )

@@ -4,7 +4,7 @@ function Die(props) {
     return (
         <>
             <div className=".container">
-                <button>{props.value}</button>
+                <button className='dice-button'>{props.value}</button>
             </div>
         </>
     )
