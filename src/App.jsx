@@ -97,7 +97,7 @@ function App() {
         <p id='time' > Rolls: {rolls} | Time: {Math.floor(time / 60)}:{(time % 60).toString().padStart(2, '0')}</p>
       </div>
       <h1 id='title'>Tenzies</h1>
-      <p id='instructions'>Roll until all dice are the same. Click each die to freeze it all its current value between rolls.</p>
+      <p id='text'>Roll until all dice are the same. Click each die to freeze it all its current value between rolls.</p>
       <main>
         {gameWon ? <ReactConfetti /> : null}
         <div className="sr-only">

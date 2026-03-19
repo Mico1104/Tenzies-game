@@ -43,7 +43,7 @@ div#root {
   margin-bottom: 20px;
 }
 
-#instructions {
+#text {
   margin-bottom: 20px;
   text-align: center;
   max-width: 80%;
@@ -58,7 +58,7 @@ main {
   margin-bottom: 30px;
 }
 
-.dice-container {
+.dice-button {
   display: grid;
   grid-template-areas:
   "a . b"

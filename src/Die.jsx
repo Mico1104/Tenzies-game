@@ -11,9 +11,9 @@ function Die(props) {
     }
     return (
         <>
-            <div className="dice-container">
+            <div className=".container">
                 <button 
-                className={`die-face face-${props.value}` }
+                className={`dice-button face-${props.value}` }
                 style={styles} 
                 onClick={props.holdFunction}
                 aria-pressed={props.isHeld}
