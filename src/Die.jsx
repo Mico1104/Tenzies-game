@@ -13,7 +13,7 @@ function Die(props) {
         <>
             <div className=".dice-container">
                 <button 
-                className={`dice-button face-${props.value}` }
+                className={`die-face face-${props.value}` }
                 style={styles} 
                 onClick={props.holdFunction}
                 aria-pressed={props.isHeld}
