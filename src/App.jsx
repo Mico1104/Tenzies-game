@@ -105,7 +105,8 @@ function App() {
         </div>
         {dice}
       </main>
-      <button className='roll-button' ref={buttonRef} onClick={rollDice} >{gameWon ? 'New Game' : 'Roll'}</button>
+      <button className='roll-button rolling' ref={buttonRef} onClick={rollDice} >{gameWon ? 'New Game' : 'Roll'}</button>
+      <p id="developer">Developed by Amoo Michael Marvellous</p>
     </div>
   )
 }

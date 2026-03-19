@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: rgb(1, 1, 24);
+    /* background-color: rgb(1, 1, 24);*/
     margin: 0;
     padding: 20px;
     height: 100vh;
@@ -14,7 +14,9 @@ body {
     justify-content: center;
     align-items: center;
     font-family: sans-serif;
+    background: radial-gradient(circle at top, #0a0a2a, #010118);
 }
+
 
 div#root {
     height: 100%;
@@ -68,6 +70,7 @@ main {
     cursor: pointer;
     transition: all 0.2s ease;
     background-color: white;
+    transition: all 0.3s ease;
 }
 
 .dice-button {
@@ -105,8 +108,8 @@ main {
 
 .pip {
     display: block;
-    width: 8px;
-    height: 8px;
+    /* width: 8px;
+    height: 8px; */
     border-radius: 50%;
     background-color: #333;
     align-self: center;
@@ -140,6 +143,7 @@ main {
     grid-area: f;
 }
 
+
 .face-4 .pip:nth-child(1) {
     grid-area: a;
 }
@@ -155,6 +159,27 @@ main {
 .face-4 .pip:nth-child(4) {
     grid-area: g;
 }
+
+.face-5 .pip:nth-child(1) {
+    grid-area: a;
+}
+
+.face-5 .pip:nth-child(2) {
+    grid-area: b;
+}
+
+.face-5 .pip:nth-child(3) {
+    grid-area: d;
+}
+
+.face-5 .pip:nth-child(4) {
+    grid-area: f;
+}
+
+.face-5 .pip:nth-child(5) {
+    grid-area: g;
+}
+
 
 .face-6 {
     grid-template-areas:
@@ -187,6 +212,12 @@ main {
     grid-area: g;
 }
 
+.developer {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: #777;
+    text-align: center;
+}
 
 #time {
     font-weight: 700;
@@ -195,10 +226,12 @@ main {
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 20px;
-    font-size: 1.1rem;
-    letter-spacing: 1px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, #1a27db, #4f5dff);
 }
+
 
 .roll-button {
     padding: 10px 0;
@@ -214,6 +247,11 @@ main {
     font-weight: 600;
     letter-spacing: 0.5px;
     transition: all 0.2s ease;
+}
+
+.roll-button:disabled {
+  background-color: gray;
+  cursor: not-allowed;
 }
 
 /* Hover effect */
@@ -247,28 +285,105 @@ main {
 /* ===== SCROLLBAR (for better look) ===== */
 
 .tenzies::-webkit-scrollbar {
-  width: 6px;
+    width: 6px;
 }
 
 .tenzies::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 10px;
+    background: #888;
+    border-radius: 10px;
 }
 
 .tenzies::-webkit-scrollbar-thumb:hover {
-  background: #555;
+    background: #555;
 }
 
 /* ===== MOBILE RESPONSIVENESS ===== */
 
 @media (max-width: 500px) {
-  main {
-    grid-template-columns: repeat(5, 40px);
-    gap: 12px;
-  }
+    main {
+        grid-template-columns: repeat(5, 40px);
+        gap: 12px;
+    }
 
-  .dice-button {
-    width: 40px;
-    height: 40px;
-  }
+    .dice-button {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Dice roll animation
+@keyframes roll {
+  0% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(90deg) scale(1.1); }
+  50% { transform: rotate(180deg) scale(0.95); }
+  75% { transform: rotate(270deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Apply when rolling 
+.dice-button.rolling {
+  animation: roll 0.4s ease;
+} */
+
+.tenzies.win {
+    box-shadow: 0 0 30px rgba(89, 227, 145, 0.8);
+    animation: winPulse 1s infinite alternate;
+}
+
+@keyframes winPulse {
+    from {
+        box-shadow: 0 0 20px rgba(89, 227, 145, 0.5);
+    }
+
+    to {
+        box-shadow: 0 0 40px rgba(89, 227, 145, 1);
+    }
+}
+
+/* Dice glow when all matched */
+.dice-button.held.win {
+    background-color: #59E391;
+    transform: scale(1.1);
+}
+
+.roll-button {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Shine effect */
+.roll-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg,
+            transparent,
+            rgba(255, 255, 255, 0.4),
+            transparent);
+    transition: all 0.5s;
+}
+
+.roll-button:hover::after {
+    left: 100%;
+}
+
+.dice-button.held {
+    animation: pop 0.2s ease;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
