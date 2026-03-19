@@ -105,7 +105,7 @@ function App() {
         </div>
         {dice}
       </main>
-      <button className='roll-button' ref={buttonRef} onClick={rollDice} >{gameWon ? 'New Game' : 'Roll Dice'}</button>
+      <button className='roll-button' ref={buttonRef} onClick={rollDice} >{gameWon ? 'New Game' : 'Roll'}</button>
     </div>
   )
 }
