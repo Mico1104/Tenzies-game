@@ -11,7 +11,7 @@ function Die(props) {
     }
     return (
         <>
-            <div className=".dice-container">
+            <div className="dice-container">
                 <button 
                 className={`die-face face-${props.value}` }
                 style={styles} 

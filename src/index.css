@@ -14,6 +14,7 @@ body {
     align-items: center;
 }
 
+
 div#root {
     height: 100%;
     width: 100%;
@@ -31,12 +32,12 @@ main {
     align-items: center;
 }
 
-.title {
+#title {
     font-size: 40px;
     margin: 0;
 }
 
-.instructions {
+#instructions {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     margin-top: 0;
@@ -66,7 +67,7 @@ button {
     font-weight: bold;
 }
 
-button.roll-dice {
+button.roll-button {
     height: 50px;
     white-space: nowrap;
     width: auto;
@@ -137,3 +138,16 @@ button.roll-dice {
         "c . e"
         "f . g";
 }
+.face-6 .pip:nth-child(1) { grid-area: a; }
+.face-6 .pip:nth-child(2) { grid-area: b; }   
+.face-6 .pip:nth-child(3) { grid-area: c; }
+.face-6 .pip:nth-child(4) { grid-area: e; }
+.face-6 .pip:nth-child(5) { grid-area: f; }
+.face-6 .pip:nth-child(6) { grid-area: g; }
+
+.time{
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    margin-top: 0;
+    text-align: center;
+  }
