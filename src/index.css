@@ -46,9 +46,14 @@ main {
 
 .dice-container {
     display: grid;
-    grid-template: auto auto / repeat(5, 1fr);
+    /* This allows the grid to wrap automatically if space is tight */
+    grid-template-columns: repeat(5, 1fr); 
+    /* Gap handles the spacing between dice */
     gap: 20px;
     margin-bottom: 40px;
+    /* Ensures the container takes up the available width in <main> */
+    width: 100%;
+    max-width: 320px; 
 }
 
 button {
