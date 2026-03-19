@@ -236,6 +236,7 @@ main {
 .roll-button {
     padding: 10px 0;
     width: 150px;
+    height: 100px;
     text-wrap: nowrap;
     font-size: 1em;
     border: none;
