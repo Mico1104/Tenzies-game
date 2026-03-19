@@ -1,3 +1,13 @@
+:root {
+  --bg-dark: #0b0d17;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --accent: #4d5bf9;
+  --accent-hover: #3a47d5;
+  --held-color: #59e391;
+  --text-light: #ffffff;
+  --text-dim: #a0a0a0;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,161 +15,130 @@
 }
 
 body {
-  background-color: rgb(1, 1, 24);
-  margin: 0;
-  padding: 20px;
-  height: 100vh;
+  background-color: var(--bg-dark);
+  background-image: radial-gradient(circle at top, #1a1c2e, #0b0d17);
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: sans-serif;
-}
-
-div#root {
-  height: 100%;
-  width: 100%;
-  max-height: 400px;
-  max-width: 400px;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--text-light);
+  padding: 20px;
 }
 
 .tenzies {
-  background-color: #F5F5F5;
-  height: 100%;
-  border-radius: 5px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 40px 20px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 450px;
   display: flex;
-  justify-content: start;
-  align-items: center;
   flex-direction: column;
-  padding-top: 30px;
-  overflow: scroll;
-  scroll-behavior: smooth;
-  scrollbar-width: thin;
-  padding-bottom: 20px;
+  align-items: center;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.stats {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.stats p {
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  border-radius: 20px;
+  color: var(--text-dim);
 }
 
 #title {
-  text-align: center;
-  margin-bottom: 20px;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
 }
 
 #text {
-  margin-bottom: 20px;
-  text-align: center;
-  max-width: 80%;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  margin-bottom: 30px;
+  line-height: 1.5;
 }
 
 main {
+  /* Responsive Grid: adapts to screen size automatically */
   display: grid;
-  grid-template-columns: repeat(5, 50px);
-  justify-content: center;
-  align-content: center;
-  gap: 20px;
-  margin-bottom: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  width: 100%;
+  max-width: 380px;
+  gap: 15px;
+  margin-bottom: 40px;
 }
 
+/* Updated Dice Styling */
 .dice-button {
-  display: grid;
-  grid-template-areas:
-  "a . b"
-  "c d e"
-  "f . g";
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  width: 50px;
-  height: 50px;
-  border-radius: 10px;
-  font-size: 1rem;
-  padding: 5px;
+  width: 60px;
+  height: 60px;
+  background-color: white;
+  border-radius: 12px;
+  cursor: pointer;
   border: none;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 0px #d1d1d1;
 }
 
-.pip {
-  display: block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #333;
-  align-self: center;
-  justify-self: center;
+.dice-button:hover {
+  transform: translateY(-2px);
 }
 
-.face-1 .pip{
-  grid-area: d;
+.dice-button:active {
+  transform: translateY(2px);
+  box-shadow: 0 0px 0px transparent;
 }
 
-.face-2 .pip:nth-child(1) {
-  grid-area: b;
-}
-.face-2 .pip:nth-child(2) {
-  grid-area: d;
-}
-
-.face-3 .pip:nth-child(1) {
-  grid-area: b;
-}
-.face-3 .pip:nth-child(2) {
-  grid-area: d;
-}
-.face-3 .pip:nth-child(3){
-  grid-area: f;
+/* State for held dice */
+.dice-button[style*="background-color: rgb(89, 227, 145)"],
+.dice-button.held { 
+  background-color: var(--held-color) !important;
+  box-shadow: 0 4px 0px #3db874;
 }
 
-.face-4 .pip:nth-child(1){
-  grid-area: a;
-}
-.face-4 .pip:nth-child(2){
-  grid-area: b;
-}
-.face-4 .pip:nth-child(3){
-  grid-area: f;
-}
-.face-4 .pip:nth-child(4){
-  grid-area: g;
-}
-
-.face-6 {
-  grid-template-areas:
-  "a . b"
-  "c . e"
-  "f . g";
-}
-
-#time {
-  font-weight: 700;
-  background-color: rgb(26, 39, 219);
-  color: white;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 20px;
-}
-
+/* Improved Roll Button */
 .roll-button {
-  padding: 10px 0;
-  width: 150px;
-  text-wrap: nowrap;
-  font-size: 1em;
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  font-weight: 700;
   border: none;
-  background-color: rgb(26, 39, 219);
+  border-radius: 12px;
+  background-color: var(--accent);
   color: white;
-  border-radius: 5px;
-  margin: 0 auto;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 8px 15px rgba(77, 91, 249, 0.3);
 }
 
-
-.roll-box {
-  margin: 0 auto;
+.roll-button:hover {
+  background-color: var(--accent-hover);
+  transform: scale(1.05);
 }
 
+.roll-button:active {
+  transform: scale(0.98);
+}
+
+/* Accessibility & Utility */
 .sr-only {
   position: absolute;
-  width: 1px;
-  height: 1px;
+  clip: rect(1px, 1px, 1px, 1px);
   padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rec(0, 0, 0, 0);
-  white-space: nowrap;
   border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
 }
